@@ -13,7 +13,8 @@
 
 <b>HOW TO INSTALL CHROME EXTENSION </b>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oswjtLwCUqg?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<a href="https://www.youtube.com/embed/oswjtLwCUqg?controls=0">Youtube Link</a>
+<br/>
 
 
 <b> CHROME EXTENSION IS SAFE NO NEED TO WORRY </b>
