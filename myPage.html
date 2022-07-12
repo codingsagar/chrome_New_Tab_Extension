@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./images/favicon-32x32.png" />
+    <title>New Tab</title>
+    <style>
+      body {
+        background-color: #2b2626;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "JetBrains Mono";
+      }
+      a {
+        text-decoration: none;
+      }
+
+      .main {
+        color: #fff456;
+        display: flex;
+        row-gap: 3rem;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        flex-direction: column;
+        margin-top: 100px;
+      }
+
+      .links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .box {
+        width: 70px;
+        height: 70px;
+        transition: all 0.4s;
+        border-radius: 5px;
+        margin: 15px 10px 15px 10px;
+        display: grid;
+        place-content: center;
+        background-color: #e6dc53;
+        border-left: 5px solid rgb(130, 130, 235);
+        border-right: 5px solid rgb(130, 130, 235);
+      }
+
+      .visbile {
+        animation-name: visble;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+      }
+
+      @keyframes visble {
+        from {
+          visibility: 0;
+        }
+        to {
+          visibility: 1;
+        }
+      }
+
+      .heading {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .box:hover {
+        box-shadow: 0px 0px 15px rgba(240, 243, 81, 0.979);
+        -webkit-box-shadow: 0px 0px 15px rgba(240, 243, 81, 0.979);
+        -moz-box-shadow: 0px 0px 15px rgba(240, 243, 81, 0.979);
+        cursor: pointer;
+        transform: scale(1.05);
+        border-left: 7px solid rgb(115, 115, 255);
+        border-right: 7px solid rgb(115, 115, 255);
+      }
+
+      #form {
+        position: absolute;
+        top: 50px;
+        display: none;
+        flex-direction: column;
+        width: 50vw;
+        row-gap: 1rem;
+        background-color: white;
+        height: 70vh;
+        justify-content: center;
+        align-items: center;
+        background-image: url("./links-img/bg.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      #form input {
+        width: 30vw;
+        height: 30px;
+        padding: 0 10px 0 10px;
+        border-radius: 5px;
+        border: 0;
+        text-transform: lowercase;
+        box-shadow: 0px 0px 2px rgba(61, 53, 53, 0.979);
+        -webkit-box-shadow: 0px 0px 2px rgbargba(61, 53, 53, 0.979);
+        -moz-box-shadow: 0px 0px 2px rgba(61, 53, 53, 0.979);
+        z-index: 999;
+      }
+
+      #form .cover {
+        height: 100%;
+        width: 100%;
+        background-color: #51515134;
+        position: absolute;
+        z-index: 997;
+      }
+
+      #form input:focus {
+        outline: none;
+      }
+
+      #form h2 {
+        color: #ffffff;
+        font-size: 20px;
+        z-index: 999;
+      }
+      #form input:last-child {
+        padding: 0;
+        text-transform: capitalize;
+        cursor: pointer;
+      }
+      #form input:last-child:focus {
+        transform: scale(0.95);
+      }
+      .box img {
+        width: 40px;
+        height: 35px;
+        border-radius: 10px;
+        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.438));
+      }
+
+      footer {
+        color: #352e2e;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        padding: 2px;
+        background-color: #e6dc53;
+        width: 100vw;
+      }
+
+      footer a {
+        font-size: 14px;
+        animation: colorChange 1s linear infinite;
+      }
+
+      @keyframes colorChange {
+        from {
+          color: rgb(203, 44, 44);
+        }
+        to {
+          color: rgb(94, 21, 21);
+        }
+      }
+
+      .link_add {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        padding: 5px;
+        border: 1px solid white;
+        top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 80px;
+        transition: transform 0.4s;
+        cursor: pointer;
+        border-radius: 50px;
+      }
+
+      .link_add img {
+        filter: none;
+        height: 32px;
+      }
+
+      .link_add:hover {
+        transform: scale(0.9);
+      }
+
+      .change_username {
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+        border: 1px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        transition: transform 0.4s;
+      }
+
+      .change_username img {
+        filter: none;
+        height: 32px;
+      }
+
+      .change_username:hover {
+        cursor: pointer;
+        transform: scale(0.9);
+      }
+
+      /* youtube search styling */
+
+      .youtube-search {
+ 
+        position: relative;
+        margin-bottom: 30px;
+      }
+
+      #yt-search{
+        font-size: 18px;
+        padding: 8px 5px 8px 70px;
+        min-width: 40vw;
+        border-radius: 1px;
+        font-family: sans-serif;
+        border: 0;
+      }
+      .youtube-search svg{
+        position: absolute;
+        width: 60px;
+        height: 37px;
+        border-right: 1px solid grey;
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="heading">
+        <h1>Good <span id="fill"></span> !</h1>
+        <h3 id="time"></h3>
+      </div>
+      <div class="links"></div>
+
+      <div class="change_username">
+        <img src="./links-img/user (1).png" alt="" />
+      </div>
+      <div class="link_add">
+        <img src="./links-img/link.png" alt="" />
+      </div>
+
+      
+
+      <div class="youtube-search">
+        <svg fill="#FF0000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px"><path d="M 44.898438 14.5 C 44.5 12.300781 42.601563 10.699219 40.398438 10.199219 C 37.101563 9.5 31 9 24.398438 9 C 17.800781 9 11.601563 9.5 8.300781 10.199219 C 6.101563 10.699219 4.199219 12.199219 3.800781 14.5 C 3.398438 17 3 20.5 3 25 C 3 29.5 3.398438 33 3.898438 35.5 C 4.300781 37.699219 6.199219 39.300781 8.398438 39.800781 C 11.898438 40.5 17.898438 41 24.5 41 C 31.101563 41 37.101563 40.5 40.601563 39.800781 C 42.800781 39.300781 44.699219 37.800781 45.101563 35.5 C 45.5 33 46 29.398438 46.101563 25 C 45.898438 20.5 45.398438 17 44.898438 14.5 Z M 19 32 L 19 18 L 31.199219 25 Z"/></svg>
+        <input
+          type="text"
+          name="yt-search"
+          id="yt-search"
+          placeholder="Search on youtube"
+        />
+      </div>
+
+
+      <form id="form" autocomplete="off">
+        <div class="cover"></div>
+        <h2>Add a new link !!</h2>
+        <input
+          type="text"
+          placeholder="Enter name"
+          id="name"
+          autocomplete="off"
+        />
+        <input
+          type="text"
+          placeholder="Enter link"
+          id="link"
+          autocomplete="off"
+        />
+        <input
+          type="text"
+          placeholder="Enter image link"
+          id="img_link"
+          autocomplete="off"
+        />
+        <input type="submit" value="Submit" id="submit" />
+      </form>
+    </div>
+
+    <footer>
+      <b
+        >Extension made by
+        <a href="https://www.instagram.com/codingsagar" class="developer"
+          >Sagar</a
+        ></b
+      >
+    </footer>
+
+
+    <script src="./main.js"></script>
+  </body>
+</html>
